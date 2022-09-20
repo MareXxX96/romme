@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate')%>
+
+<h1>Spiele</h1>
+<div>
+    <a href="/game/new">Neues Spiel</a>
+</div>
+<% for (let game of games){%>
+<div class="card mb-3 mt-3" >
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%= game.date.toLocaleString("en-GB", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit"
+                  }) %></h5>
+                <p class="card-text">
+                    <small class="text-muted">Player 1: <%= game.p1score %> | Player 2: <%= game.p2score %></small>
+                </p>
+                <div class="d-inline-flex">
+                <a class="btn btn-primary" href="/game/<%=game._id%>">Zum Spiel</a>
+                <form action="/game/<%=game._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger ml-3">Löschen</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% }%>
