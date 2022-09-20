@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate')%>
+
+<form action="/game/<%=game._id%>?_method=PUT" method="POST" id="addForm" novalidate> </form>
+
+<table class="table">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col"></th>
+        <th scope="col">Spieler 1</th>
+        <th scope="col">Spieler 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Runde</th>
+        <td><input type="number" id="p1points" name="p1points" form="addForm"></td>
+        <td><input type="number" id="p2points" name="p2points" form="addForm"></td>
+      </tr>
+      <tr>
+        <th scope="row">Gesamt</th>
+        <td id="p1score"><%= game.p1score %></td>
+        <td id="p2score"><%= game.p2score %></td>
+      </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success"form="addForm">Punkte hinzufügen</button>
+
+
+
+
